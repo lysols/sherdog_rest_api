@@ -28,7 +28,6 @@ def get_mma_card_details(post_id):
         if upcoming_events_json["mma_events"][x]["event_id"] == post_id:
                 # big time hackery going on here, needs redone to return some sort of json
                 requested_events_url = upcoming_events_json["mma_events"][x]["event_url"]
-                print requested_events_url
                 page_data_tree = request_website_data(requested_events_url)
                 fight_card = page_data_tree.xpath(".//meta[@itemprop='name']/@content")
                 return upcoming_events_json["mma_events"][x]["event_name"] + " - " + ', '.join(fight_card)
